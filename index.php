@@ -496,8 +496,8 @@ while ($row = mysqli_fetch_assoc($result)) {
                                 </div>
                             </div>
                         </div>
-<?php
-//Fetch the top states from the database
+                        <?php
+// Fetch the data from the database
 $sql = "SELECT
         dt.group as kelompok,
         SUM(CASE
@@ -523,22 +523,24 @@ $sql = "SELECT
 $result = mysqli_query($connection, $sql);
 
 $labels = array();
-$januari = array();
-$februari = array();
-$march = array();
+$januaryData = array();
+$februaryData = array();
+$marchData = array();
 
 // Process the fetched data
 while ($row = mysqli_fetch_assoc($result)) {
     $labels[] = $row['kelompok'];
-    $januari[] = $row['january_total'];
-    $februari[] = $row['february_total'];
-    $march[] = $row['march_total'];
+    $januaryData[] = $row['january_total'];
+    $februaryData[] = $row['february_total'];
+    $marchData[] = $row['march_total'];
 }
+
 $labels_gr = json_encode($labels);
-$januari_total = json_encode($januari);
-$februari_total = json_encode($februari);
-$march_total = json_encode($march);
+$januaryData_gr = json_encode($januaryData);
+$februaryData_gr = json_encode($februaryData);
+$marchData_gr = json_encode($marchData);
 ?>
+
 
 
 <!-- JavaScript code to generate the chart -->
